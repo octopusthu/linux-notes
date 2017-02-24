@@ -32,6 +32,7 @@ grant all privileges on *.* to 'zhangyu'@'%' identified by '${password}';
 ```
 
 ### phpMyAdmin
+- Prerequisites
 ```bash
-
+yum install php-mysql php-fpm
 ```
