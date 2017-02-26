@@ -32,7 +32,21 @@ grant all privileges on *.* to 'zhangyu'@'%' identified by '${password}';
 ```
 
 ### phpMyAdmin
-- Prerequisites
 ```bash
 yum install php-mysql php-fpm
 ```
+
+```bash
+ln -s /usr/share/phpMyAdmin /usr/share/nginx/html
+mv /usr/share/nginx/html/phpMyAdmin /usr/share/nginx/html/pma
+systemctl restart php-fpm
+```
+
+- /etc/phpMyAdmin/config.inc.php
+```
+$cfg['Servers'][$i]['host']	= '127.0.0.1';
+$cfg['Servers'][$i]['port']	= '15906';
+```
+
+
+

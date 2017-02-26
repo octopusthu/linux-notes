@@ -7,8 +7,5 @@ firewall-cmd --reload
 ```
 
 ### HTTPS
-
-```bash
-yum install certbot
-certbot certonly --webroot -w /usr/share/nginx/html/ -d octopusthu.com -d www.octopusthu.com
-```
+- /etc/nginx/conf.d/ssl.conf
+- /etc/nginx/default.d/ssl-redirect.conf

@@ -74,6 +74,22 @@ systemctl list-unit-files | grep php-fpm
 systemctl list-unit-files | grep enabled
 ```
 
+### Certificates
+- Create a certificate
+```bash
+yum install certbot
+certbot certonly --webroot -w /usr/share/nginx/html/ -d octopusthu.com -d www.octopusthu.com
+```
+
+- Automatic renewal
+	- /etc/systemd/system/certbot-renew.service
+	- /etc/systemd/system/certbot-renew.timer
+	
+```bash
+systemctl start certbot-renew.timer
+systemctl enable certbot-renew.timer
+```
+
 ### yum
 
 
