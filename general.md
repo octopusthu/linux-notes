@@ -92,4 +92,12 @@ systemctl enable certbot-renew.timer
 
 ### yum
 
+### Environment variables
+- /etc/profile.d/*.sh
+```
+JAVA_HOME=/usr/java/default
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME
+```
+
 
