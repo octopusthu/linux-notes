@@ -1,4 +1,11 @@
 
+### Services
+```bash
+systemctl status shadowsocks
+systemctl list-unit-files | grep php-fpm
+systemctl list-unit-files | grep enabled
+```
+
 ### Users & Groups
 ```bash
 useradd ${user} && passwd ${user}
@@ -67,12 +74,6 @@ sed -i 's,\r,,;s, *$,,' /etc/vsftpd.conf
 ```
 - TLS
 	- [How To Configure vsftpd to Use SSL/TLS on a CentOS VPS](https://www.digitalocean.com/community/tutorials/how-to-configure-vsftpd-to-use-ssl-tls-on-a-centos-vps)
-
-### Services
-```bash
-systemctl list-unit-files | grep php-fpm
-systemctl list-unit-files | grep enabled
-```
 
 ### Certificates
 - Create a certificate
