@@ -1,7 +1,125 @@
 ### Kernel
-
 - [How to Install or Upgrade to Kernel 4.14 in CentOS 7](https://www.tecmint.com/install-upgrade-kernel-version-in-centos-7/)
-
 - [How to Deploy Google BBR on CentOS 7](https://www.vultr.com/docs/how-to-deploy-google-bbr-on-centos-7)
 
+### Service Management
+```bash
+systemctl status shadowsocks
+systemctl list-unit-files | grep php-fpm
+systemctl list-unit-files | grep enabled
+```
 
+### SSH
+- ~/.ssh/sshd_config
+	- PasswordAuthentication no
+	- PermitRootLogin no
+	
+- ~/.ssh/authorized_keys
+```bash
+sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+```
+
+### Supervisor
+- Installing
+```bash
+easy_install supervisor
+echo_supervisord_conf
+echo_supervisord_conf > /etc/supervisord.conf
+```
+- Run on startup
+```bash
+cd /etc/systemd/system
+wget https://raw.githubusercontent.com/Supervisor/initscripts/master/centos-systemd-etcs
+mv centos-systemd-etcs supervisord.service
+systemctl start supervisord
+systemctl enable supervisord
+```
+
+- Logging
+```bash
+tail -f /tmp/supervisord.log
+```
+
+- Add a program
+```bash
+vim /etc/supervisord.conf
+
+[program:shadowsocksr]
+command=python server.py -c ../user-config.json  ; the program (relative uses PATH, can take args)
+directory=/etc/shadowsocksr/shadowsocks  ; directory to cwd to before exec (def no cwd)
+stdout_logfile=/etc/shadowsocksr/supervisor.log  ; stdout log path, NONE for none; default AUTO
+
+kill -1 $pid
+```
+
+- Status
+```bash
+supervisorctl status
+```
+
+### Monitoring
+
+```bash
+aureport -au --success
+aureport -au --failed
+aureport -l --success
+aureport -l --failed
+
+last root
+lastb -10
+```
+
+### Users & Groups
+```bash
+useradd ${user} && passwd ${user}
+
+usermod -aG wheel ${user}
+
+gpasswd -d ${user} ${group}
+```
+
+
+### Environment variables
+- /etc/profile.d/*.sh
+```
+JAVA_HOME=/usr/java/default
+PATH=$PATH:$JAVA_HOME/bin
+export PATH JAVA_HOME
+```
+
+### vsftpd
+- /etc/vsftpd/vsftpd.conf
+```
+pasv_enable=Yes
+pasv_max_port=10100
+pasv_min_port=10090
+```
+- firewalld
+```bash
+firewall-cmd --permanent --zone=public --add-port=10090-10100/tcp
+```
+- trim trailing spaces 
+```bash
+sed -i 's,\r,,;s, *$,,' /etc/vsftpd.conf
+```
+- TLS
+	- [How To Configure vsftpd to Use SSL/TLS on a CentOS VPS](https://www.digitalocean.com/community/tutorials/how-to-configure-vsftpd-to-use-ssl-tls-on-a-centos-vps)
+
+
+### firewalld
+
+##### services
+- /usr/lib/firewalld/services
+- /etc/firewalld/services
+
+```bash
+firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --reload
+
+firewall-cmd --get-active-zones
+firewall-cmd --list-all-zones
+firewall-cmd --zone=public --list-all
+
+firewall-cmd --zone=public --add-port=12345/tcp
+firewall-cmd --zone=public --remove-port=12345/tcp
+```
