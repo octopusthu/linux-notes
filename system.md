@@ -9,14 +9,34 @@ systemctl list-unit-files | grep php-fpm
 systemctl list-unit-files | grep enabled
 ```
 
-### SSH
-- ~/.ssh/sshd_config
-	- PasswordAuthentication no
-	- PermitRootLogin no
-	
-- ~/.ssh/authorized_keys
+### Users & Groups
 ```bash
-sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+useradd zy && passwd zy
+usermod -aG wheel zy
+gpasswd -d ${user} ${group}
+```
+
+### SSH
+- Login using a non-root user with an RSA key via a customized port
+
+client
+```bash
+ssh-keygen -t rsa
+```
+
+server
+```bash
+su - zy
+mkdir ~/.ssh
+vim ~/.ssh/authorized_keys
+    pub key content
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+vim /etc/ssh/sshd_config
+    Port xxxxx
+    PasswordAuthentication no
+    PermitRootLogin no
+systemctl restart sshd
 ```
 
 ### Supervisor
@@ -67,15 +87,6 @@ aureport -l --failed
 
 last root
 lastb -10
-```
-
-### Users & Groups
-```bash
-useradd ${user} && passwd ${user}
-
-usermod -aG wheel ${user}
-
-gpasswd -d ${user} ${group}
 ```
 
 

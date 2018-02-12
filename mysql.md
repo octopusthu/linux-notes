@@ -1,37 +1,45 @@
-### Installation
+# Installation
+
 - MySQL v 5.7 or higher generates a temporary random password after installation
-```bash
-grep 'temporary password' /var/log/mysqld.log
-```
+
+  ```bash
+  grep 'temporary password' /var/log/mysqld.log
+  ```
 
 - Security steps
-```bash
-mysql_secure_installation
-```
 
-### Config
+  ```bash
+  mysql_secure_installation
+  ```
+
+# Config
+
 - /etc/my.cnf
-```
-[mysqld]
-port=${port}
-[client]
-port=${port}
-```
+
+  ```
+  [mysqld]
+  port=${port}
+  [client]
+  port=${port}
+  ```
 
 - Firewall
+
+  ```bash
+  firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="x.x.0.0/16" port port=${port} protocol=tcp accept' --permanent
+  firewall-cmd --reload
+  ```
+
+# Grants
+
 ```bash
-firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="x.x.0.0/16" port port=${port} protocol=tcp accept' --permanent
-firewall-cmd --reload
+CREATE USER 'zhangyu'@'localhost' IDENTIFIED BY '1';
+grant all on testdb.* to 'zhangyu'@'%' identified by '1';
+grant all privileges on *.* to 'zhangyu'@'%' identified by '1';
 ```
 
-### Grants
-```bash
-grant all on testdb.* to 'zhangyu'@'%' identified by '${password}';
+# phpMyAdmin
 
-grant all privileges on *.* to 'zhangyu'@'%' identified by '${password}';
-```
-
-### phpMyAdmin
 ```bash
 yum install php-mysql php-fpm
 ```
@@ -43,10 +51,8 @@ systemctl restart php-fpm
 ```
 
 - /etc/phpMyAdmin/config.inc.php
-```
-$cfg['Servers'][$i]['host']	= '127.0.0.1';
-$cfg['Servers'][$i]['port']	= '15906';
-```
 
-
-
+  ```
+  $cfg['Servers'][$i]['host']    = '127.0.0.1';
+  $cfg['Servers'][$i]['port']    = '15906';
+  ```
