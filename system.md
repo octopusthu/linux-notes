@@ -125,6 +125,7 @@ sed -i 's,\r,,;s, *$,,' /etc/vsftpd.conf
 
 ```bash
 firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --info-service=http
 firewall-cmd --reload
 
 firewall-cmd --get-active-zones
