@@ -12,11 +12,20 @@ systemctl list-unit-files | grep enabled
 ### Users & Groups
 ```bash
 useradd zy && passwd zy
+groups zy
 usermod -aG wheel zy
 gpasswd -d ${user} ${group}
 ```
 
 ### SSH
+- Basic config
+```bash
+vim /etc/ssh/sshd_config
+    Port xxxxx
+    PasswordAuthentication no
+systemctl restart sshd
+```
+
 - Login using a non-root user with an RSA key via a customized port
 
 client

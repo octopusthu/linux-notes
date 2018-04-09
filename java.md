@@ -1,7 +1,7 @@
 ### Installation
 - rpm
 ```bash
-rpm -ivh jdk-8u121-linux-x64.rpm
+rpm -ivh jdk-8u162-linux-x64.rpm
 ```
 
 - env
