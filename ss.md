@@ -1,3 +1,0 @@
-### Shadowsocks
-
-### ShadowsocksR
