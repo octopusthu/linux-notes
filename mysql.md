@@ -34,8 +34,8 @@
 
 ```bash
 CREATE USER 'zhangyu'@'localhost' IDENTIFIED BY '1';
-grant all on testdb.* to 'zhangyu'@'%' identified by '1';
-grant all privileges on *.* to 'zhangyu'@'%' identified by '1' with grant option;
+grant all on testdb.* to 'zhangyu'@'%';
+grant all privileges on *.* to 'zhangyu'@'%' with grant option;
 flush privileges;
 ```
 

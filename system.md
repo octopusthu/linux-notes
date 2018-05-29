@@ -12,8 +12,8 @@ systemctl list-unit-files | grep enabled
 ### Users & Groups
 ```bash
 useradd zy && passwd zy
-groupadd dev
-groups dev
+groupadd ${newGroup}
+groups zy
 usermod -aG wheel zy
 gpasswd -d ${user} ${group}
 ```
