@@ -18,11 +18,13 @@
 - /var/log/nginx/
 
 ### HTTPS
-- /etc/nginx/conf.d/ssl.conf
-- /etc/nginx/default.d/ssl-redirect.conf
 
+##### Configure Nginx and Certbot 
 
-### Certificates
+- Configure Nginx
+  - /etc/nginx/conf.d/ssl.conf
+  - /etc/nginx/default.d/ssl-redirect.conf
+
 - Create a certificate
 ```bash
 yum install certbot
@@ -37,4 +39,15 @@ certbot certonly --webroot -w /usr/share/nginx/html/ -d octopusthu.com -d www.oc
 systemctl start certbot-renew.timer
 systemctl enable certbot-renew.timer
 ```
+
+##### Configure Certbot the automatic way
+- [certbot](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
+  - pkg_resources.DistributionNotFound: The 'PyOpenSSL>=0.13' distribution was not found and is required by josepy, acme
+    ```bash
+    sudo yum reinstall pyOpenSSL
+    ```
+  - pkg_resources.DistributionNotFound: The 'idna>=2.1' distribution was not found and is required by cryptography
+  ```bash
+    sudo yum reinstall python-idna
+    ```
 
