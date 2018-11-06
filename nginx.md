@@ -1,16 +1,16 @@
 ### Installation
 - [nginx: Linux packages](https://nginx.org/en/linux_packages.html)
-  ```bash
-  vim /etc/yum.repos.d/nginx.repo
-  
-  [nginx]
-  name=nginx repo
-  baseurl=http://nginx.org/packages/centos/7/$basearch/
-  gpgcheck=0
-  enabled=1
-  
-  yum install nginx
-  ``` 
+```bash
+vim /etc/yum.repos.d/nginx.repo
+
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+
+yum install nginx
+``` 
 
 ### Config
 
