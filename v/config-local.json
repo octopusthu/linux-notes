@@ -1,0 +1,104 @@
+{
+  "log": {
+    "access": "${v2ray}/access.log",
+    "error": "${v2ray}/error.log"
+  },
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "relay"
+        ],
+        "outboundTag": "relay"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "port": 65530,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "email": "local",
+        "method": "aes-128-cfb",
+        "password": "1",
+        "udp": false,
+        "level": 1,
+        "ota": false
+      }
+    },
+    {
+      "tag": "relay",
+      "port": 65531,
+      "listen": "127.0.0.1",
+      "protocol": "shadowsocks",
+      "settings": {
+        "email": "local",
+        "method": "aes-128-cfb",
+        "password": "1",
+        "udp": false,
+        "level": 1,
+        "ota": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "${server-address}",
+            "port": "${server-port}",
+            "users": [
+              {
+                "id": "${server-password}"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true
+        }
+      },
+      "mux": {
+        "enabled": true,
+        "concurrency": 8
+      }
+    },
+    {
+      "tag": "relay",
+      "protocol": "socks",
+      "settings": {
+        "servers": [
+          {
+            "address": "${relay-address}",
+            "port": 65532,
+            "users": [
+              {
+                "user": "${relay-user}",
+                "pass": "${relay-password}"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": true
+        }
+      },
+      "mux": {
+        "enabled": true,
+        "concurrency": 8
+      }
+    }
+  ]
+}
