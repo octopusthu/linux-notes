@@ -35,10 +35,9 @@
       "settings": {
         "clients": [
           {
+            "email": "${user-email}",
             "id": "${server-password}",
-            "level": 1,
-            "alterId": 64,
-            "email": "${user-email}"
+            "alterId": 64
           }
         ]
       },

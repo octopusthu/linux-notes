@@ -5,7 +5,7 @@
   },
   "inbounds": [
     {
-      "port": 65532,
+      "port": "${relay-server-port}",
       "protocol": "socks",
       "settings": {
         "auth": "password",
@@ -15,10 +15,7 @@
             "pass": "${relay-password}"
           }
         ],
-        "udp": true,
-        "ip": "127.0.0.1",
-        "timeout": 30,
-        "userLevel": 0
+        "udp": true
       },
       "streamSettings": {
         "network": "tcp",
@@ -49,10 +46,11 @@
         "vnext": [
           {
             "address": "${server-address}",
-            "port": 65532,
+            "port": "${server-port}",
             "users": [
               {
-                "id": "${server-password}"
+                "id": "${server-password}",
+                "alterId": 16
               }
             ]
           }

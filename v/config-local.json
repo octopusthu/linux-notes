@@ -16,30 +16,22 @@
   },
   "inbounds": [
     {
-      "port": 65530,
-      "listen": "127.0.0.1",
+      "port": "${local-ss-port}",
       "protocol": "shadowsocks",
       "settings": {
-        "email": "local",
+        "email": "local@v2ray.com",
         "method": "aes-128-cfb",
-        "password": "1",
-        "udp": false,
-        "level": 1,
-        "ota": false
+        "password": "1"
       }
     },
     {
       "tag": "relay",
-      "port": 65531,
-      "listen": "127.0.0.1",
+      "port": "${local-ss-relay-port}",
       "protocol": "shadowsocks",
       "settings": {
-        "email": "local",
+        "email": "local-relay@v2ray.com",
         "method": "aes-128-cfb",
-        "password": "1",
-        "udp": false,
-        "level": 1,
-        "ota": false
+        "password": "1"
       }
     }
   ],
@@ -53,7 +45,8 @@
             "port": "${server-port}",
             "users": [
               {
-                "id": "${server-password}"
+                "id": "${server-password}",
+                "alterId": 16
               }
             ]
           }
@@ -77,8 +70,8 @@
       "settings": {
         "servers": [
           {
-            "address": "${relay-address}",
-            "port": 65532,
+            "address": "${relay-server-address}",
+            "port": "${relay-server-port}",
             "users": [
               {
                 "user": "${relay-user}",
