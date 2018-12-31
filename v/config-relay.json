@@ -37,6 +37,16 @@
           ]
         }
       }
+    },
+    {
+      "tag": "ss",
+      "port": "${relay-server-ss-port}",
+      "protocol": "shadowsocks",
+      "settings": {
+        "email": "${relay-server-ss-user-email}",
+        "method": "aes-128-cfb",
+        "password": "${relay-server-ss-password}"
+      }
     }
   ],
   "outbounds": [

@@ -2,8 +2,11 @@
 ### Server
 - Install/Upgrade
 ```
-su
 bash <(curl -L -s https://install.direct/go.sh)
+```
+or install locally
+```
+./go.sh --local /path/to/file 
 ```
 - config
 ```
