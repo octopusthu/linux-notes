@@ -1,4 +1,7 @@
-### Installation
+# Nginx
+
+## Installation
+
 - [nginx: Linux packages](https://nginx.org/en/linux_packages.html)
 
 ```bash
@@ -11,14 +14,18 @@ gpgcheck=0
 enabled=1
 
 yum install nginx
-``` 
+```
 
-### Config
-### Logs
+## Config
+
+## Logs
+
 - /var/log/nginx/
-### HTTPS
 
-##### Configure Nginx and Certbot 
+## HTTPS
+
+### Configure Nginx and Certbot
+
 - Configure Nginx
   - /etc/nginx/conf.d/ssl.conf
   - /etc/nginx/default.d/ssl-redirect.conf
@@ -29,21 +36,26 @@ yum install certbot
 certbot certonly --webroot -w /usr/share/nginx/html/ -d octopusthu.com -d www.octopusthu.com
 ```
 
-##### Configure Certbot the automatic way
+### Configure Certbot the automatic way
+
 - [certbot](https://certbot.eff.org/lets-encrypt/centosrhel7-nginx)
   - pkg_resources.DistributionNotFound: The 'PyOpenSSL>=0.13' distribution was not found and is required by josepy, acme
-```bash
-sudo yum reinstall pyOpenSSL
-```
-  
-  - pkg_resources.DistributionNotFound: The 'idna>=2.1' distribution was not found and is required by cryptography
-```bash
-sudo yum reinstall python-idna
-```
 
-##### Automatic renewal
+  ```bash
+  sudo yum reinstall pyOpenSSL
+  ```
+
+  - pkg_resources.DistributionNotFound: The 'idna>=2.1' distribution was not found and is required by cryptography
+
+  ```bash
+  sudo yum reinstall python-idna
+  ```
+
+### Automatic renewal
+
 - /etc/systemd/system/certbot-renew.service
-```
+
+```config
 [Unit]
 Description=Cerbot certificates automatic renewal
 
@@ -54,8 +66,10 @@ ExecStart=/usr/bin/certbot renew --quiet
 [Install]
 WantedBy=multi-user.target
 ```
+
 - /etc/systemd/system/certbot-renew.timer
-```
+
+```config
 [Unit]
 Description=Timer of Cerbot certificates automatic renewal
 
