@@ -1,15 +1,20 @@
-### Kernel
+# System
+
+## Kernel
+
 - [How to Install or Upgrade to Kernel 4.14 in CentOS 7](https://www.tecmint.com/install-upgrade-kernel-version-in-centos-7/)
+
 - [How to Deploy Google BBR on CentOS 7](https://www.vultr.com/docs/how-to-deploy-google-bbr-on-centos-7)
 
-### Service Management
+## Service Management
+
 ```bash
 systemctl status shadowsocks
 systemctl list-unit-files | grep php-fpm
 systemctl list-unit-files | grep enabled
 ```
+## Users & Groups
 
-### Users & Groups
 ```bash
 useradd zy && passwd zy
 groupadd ${newGroup}
@@ -18,8 +23,10 @@ usermod -aG wheel zy
 gpasswd -d ${user} ${group}
 ```
 
-### SSH
+## SSH
+
 - Basic config
+
 ```bash
 vim /etc/ssh/sshd_config
     Port xxxxx
@@ -30,11 +37,13 @@ systemctl restart sshd
 - Login using a non-root user with an RSA key via a customized port
 
 client
+
 ```bash
 ssh-keygen -t rsa
 ```
 
 server
+
 ```bash
 su - zy
 mkdir ~/.ssh
@@ -49,14 +58,18 @@ vim /etc/ssh/sshd_config
 systemctl restart sshd
 ```
 
-### Supervisor
+## Supervisor
+
 - Installing
+
 ```bash
 easy_install supervisor
 echo_supervisord_conf
 echo_supervisord_conf > /etc/supervisord.conf
 ```
+
 - Run on startup
+
 ```bash
 cd /etc/systemd/system
 wget https://raw.githubusercontent.com/Supervisor/initscripts/master/centos-systemd-etcs
@@ -66,11 +79,13 @@ systemctl enable supervisord
 ```
 
 - Logging
+
 ```bash
 tail -f /tmp/supervisord.log
 ```
 
 - Add a program
+
 ```bash
 vim /etc/supervisord.conf
 
@@ -83,11 +98,12 @@ kill -1 $pid
 ```
 
 - Status
+
 ```bash
 supervisorctl status
 ```
 
-### Monitoring
+## Monitoring
 
 ```bash
 aureport -au --success
@@ -99,19 +115,22 @@ last root
 lastb -10
 ```
 
+## Environment variables
 
-### Environment variables
 - /etc/profile.d/*.sh
+
 ```
 JAVA_HOME=/usr/java/default
 PATH=$PATH:$JAVA_HOME/bin
 export PATH JAVA_HOME
 ```
 
-### firewalld
+## firewalld
 
-##### services
+### services
+
 - /usr/lib/firewalld/services
+
 - /etc/firewalld/services
 
 ```bash
@@ -127,5 +146,6 @@ firewall-cmd --zone=public --add-port=12345/tcp
 firewall-cmd --zone=public --remove-port=12345/tcp
 ```
 
-### Yum
+## Yum
+
 - [IUS Community Project](https://ius.io/)
