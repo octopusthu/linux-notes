@@ -1,5 +1,14 @@
 # System
 
+## Initial Setup
+
+### Set Timezone
+
+```bash
+mv /etc/localtime /etc/localtime.backup
+ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
 ## Kernel
 
 - [How to Install or Upgrade to Kernel 4.14 in CentOS 7](https://www.tecmint.com/install-upgrade-kernel-version-in-centos-7/)
@@ -13,6 +22,7 @@ systemctl status shadowsocks
 systemctl list-unit-files | grep php-fpm
 systemctl list-unit-files | grep enabled
 ```
+
 ## Users & Groups
 
 ```bash
@@ -119,7 +129,7 @@ lastb -10
 
 - /etc/profile.d/*.sh
 
-```
+```sh
 JAVA_HOME=/usr/java/default
 PATH=$PATH:$JAVA_HOME/bin
 export PATH JAVA_HOME
@@ -127,10 +137,7 @@ export PATH JAVA_HOME
 
 ## firewalld
 
-### services
-
 - /usr/lib/firewalld/services
-
 - /etc/firewalld/services
 
 ```bash
