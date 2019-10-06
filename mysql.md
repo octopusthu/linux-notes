@@ -1,4 +1,6 @@
-# Installation
+# MySQL
+
+## Installation
 
 - MySQL v 5.7 or higher generates a temporary random password after installation
 
@@ -12,11 +14,11 @@
   mysql_secure_installation
   ```
 
-# Config
+## Config
 
 - /etc/my.cnf
 
-  ```
+  ```mysql
   [mysqld]
   port=${port}
   [client]
@@ -30,7 +32,7 @@
   firewall-cmd --reload
   ```
 
-# Grants
+## Grants
 
 ```bash
 CREATE USER 'zhangyu'@'localhost' IDENTIFIED BY '1';
@@ -39,7 +41,7 @@ grant all privileges on *.* to 'zhangyu'@'%' with grant option;
 flush privileges;
 ```
 
-# phpMyAdmin
+## phpMyAdmin
 
 ```bash
 yum install php-mysql php-fpm
@@ -53,7 +55,7 @@ systemctl restart php-fpm
 
 - /etc/phpMyAdmin/config.inc.php
 
-  ```
+  ```php
   $cfg['Servers'][$i]['host']    = '127.0.0.1';
   $cfg['Servers'][$i]['port']    = '15906';
   ```
