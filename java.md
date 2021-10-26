@@ -1,10 +1,15 @@
-### Installation
+# Java
+
+## Installation
+
 - rpm
+
 ```bash
 rpm -ivh jdk-8u162-linux-x64.rpm
 ```
 
 - env
+
 ```bash
 vi /etc/profile.d/java.sh
 
@@ -17,4 +22,3 @@ source java.sh
 ```
 
 ### Config
-
