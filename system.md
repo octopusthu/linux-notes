@@ -17,35 +17,19 @@ chsh
 
 [Install Oh My Zsh](https://ohmyz.sh/)
 
+- git
+
+```bash
+git config --global credential.helper 'store'
+git config --global user.name "octopusthu"
+git config --global user.email octopusthu@gmail.com
+```
+
 ### Set Timezone
 
 ```bash
 mv /etc/localtime /etc/localtime.backup
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-```
-
-## Kernel
-
-- [How to Install or Upgrade to Kernel 4.14 in CentOS 7](https://www.tecmint.com/install-upgrade-kernel-version-in-centos-7/)
-
-- [How to Deploy Google BBR on CentOS 7](https://www.vultr.com/docs/how-to-deploy-google-bbr-on-centos-7)
-
-## Service Management
-
-```bash
-systemctl status shadowsocks
-systemctl list-unit-files | grep php-fpm
-systemctl list-unit-files | grep enabled
-```
-
-## Users & Groups
-
-```bash
-useradd zy && passwd zy
-groupadd ${newGroup}
-groups zy
-usermod -aG wheel zy
-gpasswd -d ${user} ${group}
 ```
 
 ## SSH
@@ -81,6 +65,30 @@ vim /etc/ssh/sshd_config
     PasswordAuthentication no
     PermitRootLogin no
 systemctl restart sshd
+```
+
+## Kernel
+
+- [How to Install or Upgrade to Kernel 4.14 in CentOS 7](https://www.tecmint.com/install-upgrade-kernel-version-in-centos-7/)
+
+- [How to Deploy Google BBR on CentOS 7](https://www.vultr.com/docs/how-to-deploy-google-bbr-on-centos-7)
+
+## Service Management
+
+```bash
+systemctl status shadowsocks
+systemctl list-unit-files | grep php-fpm
+systemctl list-unit-files | grep enabled
+```
+
+## Users & Groups
+
+```bash
+useradd zy && passwd zy
+groupadd ${newGroup}
+groups zy
+usermod -aG wheel zy
+gpasswd -d ${user} ${group}
 ```
 
 ## Monitoring
