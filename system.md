@@ -37,10 +37,10 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 - Basic config
 
 ```bash
-vim /etc/ssh/sshd_config
+sudo vim /etc/ssh/sshd_config
     Port xxxxx
     PasswordAuthentication no
-systemctl restart sshd
+sudo systemctl restart sshd
 ```
 
 - Login using a non-root user with an RSA key via a customized port
