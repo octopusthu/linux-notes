@@ -113,37 +113,4 @@ PATH=$PATH:$JAVA_HOME/bin
 export PATH JAVA_HOME
 ```
 
-## firewalld
-
-- /usr/lib/firewalld/services
-- /etc/firewalld/services
-
-```bash
-firewall-cmd --zone=public --add-service=http --permanent
-firewall-cmd --info-service=http
-firewall-cmd --reload
-
-firewall-cmd --get-active-zones
-firewall-cmd --list-all-zones
-firewall-cmd --zone=public --list-all
-
-firewall-cmd --zone=public --add-port=12345/tcp
-firewall-cmd --zone=public --remove-port=12345/tcp
-```
-
-## Yum
-
-- [IUS Community Project](https://ius.io/)
-
 ## Misc
-
-- Warning upon login: `-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory`
-
-```bash
-vi /etc/environment
-
-# add these lines...
-
-LANG=en_US.utf-8
-LC_ALL=en_US.utf-8
-```
