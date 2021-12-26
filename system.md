@@ -1,8 +1,6 @@
 # System
 
-## Initial Setup
-
-### Must-Install Packages and Software
+## Must-Install Packages
 
 - zsh
 
@@ -17,7 +15,9 @@ chsh
 
 [Install Oh My Zsh](https://ohmyz.sh/)
 
-- git
+## Configurations
+
+- Configure Git
 
 ```bash
 git config --global credential.helper 'store'
@@ -25,11 +25,14 @@ git config --global user.name "octopusthu"
 git config --global user.email octopusthu@gmail.com
 ```
 
-### Set Timezone
+- Set timezone
 
 ```bash
 mv /etc/localtime /etc/localtime.backup
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+# need re-login
+localectl set-locale LC_TIME=en_GB.UTF-8
 ```
 
 ## SSH
@@ -66,6 +69,11 @@ vim /etc/ssh/sshd_config
     PermitRootLogin no
 systemctl restart sshd
 ```
+
+## Unattended Upgrades
+
+- [UnattendedUpgrades](https://wiki.debian.org/UnattendedUpgrades)
+  - Need the `sendmail` package to send notifications via email
 
 ## Kernel
 
