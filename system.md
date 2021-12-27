@@ -31,9 +31,13 @@ git config --global user.email octopusthu@gmail.com
 mv /etc/localtime /etc/localtime.backup
 ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-# need re-login
+# Change to 24hr format (need re-login)
 localectl set-locale LC_TIME=en_GB.UTF-8
 ```
+
+- Set hostname (For packages like `sendmail` to function normal)
+  - `hostnamectl set-hostname localhost.local`
+  - In /etc/hosts, assign the just updated hostname `localhost.local` to `127.0.0.1`
 
 ## SSH
 
