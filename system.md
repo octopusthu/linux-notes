@@ -36,8 +36,8 @@ localectl set-locale LC_TIME=en_GB.UTF-8
 ```
 
 - Set hostname (For packages like `sendmail` to function normal)
-  - `hostnamectl set-hostname localhost.local`
-  - In /etc/hosts, assign the just updated hostname `localhost.local` to `127.0.0.1`
+  - `hostnamectl set-hostname example.com`
+  - In /etc/hosts, assign the just updated hostname `example.com` to `127.0.0.1`
 
 ## SSH
 
