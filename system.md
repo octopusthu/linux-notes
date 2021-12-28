@@ -2,7 +2,7 @@
 
 ## Must-Install Packages
 
-- zsh
+### zsh
 
 ```bash
 sudo apt install zsh
@@ -11,9 +11,18 @@ chsh
 /bin/zsh
 ```
 
-- oh-my-zsh
+### oh-my-zsh
 
-[Install Oh My Zsh](https://ohmyz.sh/)
+- [Install Oh My Zsh](https://ohmyz.sh/)
+- Use Gitee Mirror
+
+```bash
+wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
+REMOTE=https://gitee.com/mirrors/oh-my-zsh.git BRANCH=master sh install.sh
+
+cd ~/.oh-my-zsh
+git remote set-url origin https://gitee.com/mirrors/oh-my-zsh.git
+```
 
 ## Configurations
 
