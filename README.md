@@ -46,6 +46,8 @@ git remote set-url origin https://gitee.com/mirrors/oh-my-zsh.git
 
 - [Post-installation steps for Linux](https://docs.docker.com/engine/install/linux-postinstall/), e.g., run docker commands as a non-root user
 
+- [Install Docker Compose V2 on Linux](https://docs.docker.com/compose/cli-command/#install-on-linux)
+
 ## Configurations
 
 - Configure Git
