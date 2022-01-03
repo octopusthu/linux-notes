@@ -4,7 +4,7 @@ Notes and tips in regard to Linux installation, configuration and maintenance.
 
 ## Current OS
 
-- Ubuntu 20.04.3 LTS
+- Ubuntu 20.04 LTS
 - Ubuntu 21.10
 
 ## History OS
@@ -31,9 +31,6 @@ chsh
 ```bash
 wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
 REMOTE=https://gitee.com/mirrors/oh-my-zsh.git BRANCH=master sh install.sh
-
-cd ~/.oh-my-zsh
-git remote set-url origin https://gitee.com/mirrors/oh-my-zsh.git
 ```
 
 - Edit `~/.zshrc` to enable common plugins (such as docker) and include any startup scripts
