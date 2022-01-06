@@ -65,7 +65,7 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 localectl set-locale LC_TIME=en_GB.UTF-8
 ```
 
-- Set hostname (For packages like `sendmail` to function normal)
+- Set hostname (For packages like `sendmail` to function)
   - `hostnamectl set-hostname example.com`
   - In /etc/hosts, assign the just updated hostname `example.com` to `127.0.0.1`
 
