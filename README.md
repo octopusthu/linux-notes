@@ -4,13 +4,7 @@ Notes and tips in regard to Linux installation, configuration and maintenance.
 
 ## Current OS
 
-- Ubuntu 20.04 LTS
-- Ubuntu 21.10
-
-## History OS
-
-- CentOS 7
-- CentOS 8
+- Ubuntu 22.04 LTS
 
 ## Must-Install Packages
 
@@ -25,8 +19,7 @@ chsh
 /bin/zsh
 ```
 
-- [Install Oh My Zsh](https://ohmyz.sh/)
-- Use oh-my-zsh Gitee Mirror
+- [Install Oh My Zsh](https://ohmyz.sh/) via Gitee Mirror
 
 ```bash
 wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
@@ -108,3 +101,12 @@ systemctl restart sshd
 
 - [UnattendedUpgrades](https://wiki.debian.org/UnattendedUpgrades)
   - Need the `sendmail` package to send notifications via email
+
+## Archive
+
+### History OS
+
+- CentOS 7
+- CentOS 8
+- Ubuntu 20.04 LTS
+- Ubuntu 21.10
